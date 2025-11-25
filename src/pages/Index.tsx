@@ -87,7 +87,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
           {/* Left side - Image Carousel */}
           <div className="flex flex-col items-center gap-4">
-            <Carousel setApi={setApi} className="w-full max-w-md">
+            <Carousel setApi={setApi} className="w-full max-w-xl">
               <CarouselContent>
                 {images.map((image, index) => (
                   <CarouselItem key={index}>
