@@ -87,12 +87,12 @@ const Index = () => {
       <div className="flex flex-1 items-center relative z-10 px-6 py-12">
         <div className="max-w-7xl mx-auto w-full grid md:grid-cols-2 gap-12 items-center">
           {/* Left side - Hero Section */}
-          <div className="space-y-8 text-left">
+          <div className="space-y-8 text-right">
             <div className="space-y-4">
               <h1 className="text-5xl md:text-6xl font-bold text-foreground tracking-tight">
                 LaTeXify
               </h1>
-              <div className="h-1 w-24 bg-accent rounded-full"></div>
+              <div className="h-1 w-24 bg-accent rounded-full ml-auto"></div>
             </div>
             
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
