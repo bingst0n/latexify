@@ -7,10 +7,10 @@ const Index = () => {
     <div className="flex min-h-screen flex-col bg-background">
       <header className="border-b border-border/40 px-6 py-4">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
-          <NavLink to="/" className="text-2xl md:text-3xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
+          <NavLink to="/" className="text-xl md:text-2xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
             LaTeXify
           </NavLink>
-          <div className="flex items-center gap-6 text-sm md:text-base">
+          <div className="flex items-center gap-12 text-xs md:text-sm">
             <NavLink to="/editor" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
               Simple Equation Editor
             </NavLink>
@@ -42,7 +42,7 @@ const Index = () => {
             size="lg" 
             className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold px-8 py-6 text-lg group"
           >
-            Start Tool
+            Start AI Tool
             <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
