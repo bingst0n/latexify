@@ -4,8 +4,31 @@ import { NavLink } from "@/components/NavLink";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-background">
-      <header className="border-b border-border/40 px-6 py-4">
+    <div className="flex min-h-screen flex-col bg-background relative overflow-hidden">
+      {/* Animated grid background */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, currentColor 1px, transparent 1px),
+            linear-gradient(to bottom, currentColor 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+          animation: 'gridMove 20s linear infinite',
+        }}
+      />
+      <style>{`
+        @keyframes gridMove {
+          0% {
+            background-position: 0 0;
+          }
+          100% {
+            background-position: 40px 0;
+          }
+        }
+      `}</style>
+      
+      <header className="border-b border-border/40 px-6 py-4 relative z-10">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <NavLink to="/" className="text-xl md:text-2xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
             LaTeXify
@@ -21,7 +44,7 @@ const Index = () => {
         </nav>
       </header>
       
-      <div className="flex flex-1 items-center justify-center px-4">
+      <div className="flex flex-1 items-center justify-center px-4 relative z-10">
       <div className="max-w-3xl text-center space-y-8">
         <div className="space-y-4">
           <h1 className="text-6xl md:text-7xl font-bold text-foreground tracking-tight">
