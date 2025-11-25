@@ -68,7 +68,7 @@ const Index = () => {
         }
       `}</style>
       
-      <header className="border-b border-border/40 px-6 py-4 relative z-10">
+      <header className="border-b border-border/40 px-6 py-4 relative z-10 bg-background">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
           <NavLink to="/" className="text-xl md:text-2xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
             LaTeXify
