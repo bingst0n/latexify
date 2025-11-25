@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Github } from "lucide-react";
 import { NavLink } from "@/components/NavLink";
 import { useState, useEffect } from "react";
 import {
@@ -69,17 +69,28 @@ const Index = () => {
       
       <header className="border-b border-border/40 px-6 py-4 relative z-10 bg-background">
         <nav className="flex items-center justify-between max-w-7xl mx-auto">
-          <NavLink to="/" className="text-xl md:text-2xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
-            LaTeXify
-          </NavLink>
-          <div className="flex items-center gap-12 text-xs md:text-sm">
-            <NavLink to="/editor" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
-              Simple Equation Editor
+          <div className="flex items-center gap-8">
+            <NavLink to="/" className="text-xl md:text-2xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
+              LaTeXify
             </NavLink>
-            <NavLink to="/ai" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
-              AI Tool
-            </NavLink>
+            <div className="flex items-center gap-6 text-xs md:text-sm">
+              <NavLink to="/editor" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
+                Simple Equation Editor
+              </NavLink>
+              <NavLink to="/ai" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
+                AI Tool
+              </NavLink>
+            </div>
           </div>
+          <a 
+            href="https://github.com/bingst0n/latexify" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-foreground/70 hover:text-foreground transition-colors"
+            aria-label="GitHub Repository"
+          >
+            <Github className="h-5 w-5" />
+          </a>
         </nav>
       </header>
       
@@ -146,8 +157,9 @@ const Index = () => {
               </Button>
             </div>
 
-            <div className="pt-4 text-sm text-muted-foreground">
+            <div className="pt-4 text-sm text-muted-foreground space-y-1">
               <p>Convert • Simplify • LaTeXify</p>
+              <p className="text-xs">Open source under the MIT License</p>
             </div>
           </div>
         </div>
