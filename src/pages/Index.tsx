@@ -82,15 +82,9 @@ const Index = () => {
               </NavLink>
             </div>
           </div>
-          <a 
-            href="https://github.com/bingst0n/latexify" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="text-foreground/70 hover:text-foreground transition-colors"
-            aria-label="GitHub Repository"
-          >
-            <Github className="h-5 w-5" />
-          </a>
+          <NavLink to="/auth" className="text-xs md:text-sm text-foreground/70 hover:text-foreground transition-colors font-medium">
+            Sign In
+          </NavLink>
         </nav>
       </header>
       
@@ -157,9 +151,18 @@ const Index = () => {
               </Button>
             </div>
 
-            <div className="pt-4 text-sm text-muted-foreground space-y-1">
+            <div className="pt-4 text-sm text-muted-foreground space-y-2">
               <p>Convert • Simplify • LaTeXify</p>
               <p className="text-xs">Open source under the MIT License</p>
+              <a 
+                href="https://github.com/bingst0n/latexify" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-xs text-foreground/70 hover:text-foreground transition-colors"
+              >
+                <Github className="h-4 w-4" />
+                View on GitHub
+              </a>
             </div>
           </div>
         </div>
