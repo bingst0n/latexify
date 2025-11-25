@@ -1,9 +1,27 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { NavLink } from "@/components/NavLink";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen flex-col bg-background">
+      <header className="border-b border-border/40 px-6 py-4">
+        <nav className="flex items-center justify-between max-w-7xl mx-auto">
+          <NavLink to="/" className="text-2xl md:text-3xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
+            LaTeXify
+          </NavLink>
+          <div className="flex items-center gap-6 text-sm md:text-base">
+            <NavLink to="/editor" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
+              Simple Equation Editor
+            </NavLink>
+            <NavLink to="/ai" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
+              AI Tool
+            </NavLink>
+          </div>
+        </nav>
+      </header>
+      
+      <div className="flex flex-1 items-center justify-center px-4">
       <div className="max-w-3xl text-center space-y-8">
         <div className="space-y-4">
           <h1 className="text-6xl md:text-7xl font-bold text-foreground tracking-tight">
@@ -33,6 +51,7 @@ const Index = () => {
           <p>Convert • Simplify • LaTeXify</p>
         </div>
       </div>
+    </div>
     </div>
   );
 };
