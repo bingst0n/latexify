@@ -2,7 +2,7 @@
 
 ## Project info
 
-**URL**: https://lovable.dev/projects/3e5b3c13-ebbd-45f9-bb5e-e197e00c3dfe
+**URL**: https://lateixfy-clean-math.lovable.app
 
 ## How can I edit this code?
 
