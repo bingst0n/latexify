@@ -36,12 +36,11 @@ const Index = () => {
     return () => clearInterval(interval);
   }, [api]);
 
-  // Placeholder images
   const images = [
-    "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=500&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=500&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1596495577886-d920f1fb7238?w=500&h=500&fit=crop",
-    "https://images.unsplash.com/photo-1635070041409-e63e783d3f49?w=500&h=500&fit=crop",
+    "/images/slide1.png",
+    "/images/slide2.png",
+    "/images/slide3.png",
+    "/images/slide4.png",
   ];
   return (
     <div className="flex min-h-screen flex-col bg-background relative overflow-hidden">
