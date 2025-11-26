@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useAuth } from '@/contexts/AuthContext';
-import { NavLink } from '@/components/NavLink';
+import { Header } from '@/components/Header';
 
 const Auth = () => {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -43,23 +43,7 @@ const Auth = () => {
 
   return (
     <div className="flex min-h-screen flex-col bg-background">
-      <header className="border-b border-border/40 px-6 py-4 bg-background">
-        <nav className="flex items-center justify-between max-w-7xl mx-auto">
-          <div className="flex items-center gap-8">
-            <NavLink to="/" className="text-xl md:text-2xl font-bold text-foreground tracking-tight hover:text-foreground/80 transition-colors">
-              LaTeXify
-            </NavLink>
-            <div className="flex items-center gap-6 text-xs md:text-sm">
-              <NavLink to="/editor" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
-                Simple Equation Editor
-              </NavLink>
-              <NavLink to="/ai" className="text-foreground/70 hover:text-foreground transition-colors font-medium">
-                AI Tool
-              </NavLink>
-            </div>
-          </div>
-        </nav>
-      </header>
+      <Header />
 
       <div className="flex flex-1 items-center justify-center px-6 py-12">
         <div className="w-full max-w-md space-y-8">

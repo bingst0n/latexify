@@ -6,6 +6,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import Editor from "./pages/Editor";
+import AI from "./pages/AI";
+import MyStuff from "./pages/MyStuff";
+import Settings from "./pages/Settings";
+import Upgrade from "./pages/Upgrade";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -20,6 +25,11 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/auth" element={<Auth />} />
+            <Route path="/editor" element={<Editor />} />
+            <Route path="/ai" element={<AI />} />
+            <Route path="/my-stuff" element={<MyStuff />} />
+            <Route path="/settings" element={<Settings />} />
+            <Route path="/upgrade" element={<Upgrade />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
