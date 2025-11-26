@@ -34,7 +34,9 @@ const Auth = () => {
       if (error) {
         setError(error.message);
       } else {
-        navigate('/');
+        const params = new URLSearchParams(window.location.search);
+        const redirect = params.get('redirect') || '/';
+        navigate(redirect);
       }
     }
 
