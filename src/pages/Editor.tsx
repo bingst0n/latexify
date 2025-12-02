@@ -53,9 +53,12 @@ E = mc^2
   const [projectName, setProjectName] = useState("Untitled Project");
   const [saving, setSaving] = useState(false);
   const [projectId, setProjectId] = useState<string | null>(null);
+  const [editorWidth, setEditorWidth] = useState(50); // percentage
+  const [isDragging, setIsDragging] = useState(false);
   const previewRef = useRef<HTMLDivElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
   const lineNumbersRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   
   const { user } = useAuth();
   const { toast } = useToast();
@@ -194,6 +197,41 @@ E = mc^2
     }
   }, []);
 
+  // Handle resize drag
+  const handleMouseDown = useCallback(() => {
+    setIsDragging(true);
+  }, []);
+
+  const handleMouseMove = useCallback(
+    (e: MouseEvent) => {
+      if (!isDragging || !containerRef.current) return;
+      
+      const containerRect = containerRef.current.getBoundingClientRect();
+      const newWidth = ((e.clientX - containerRect.left) / containerRect.width) * 100;
+      
+      // Clamp between 20% and 80%
+      const clampedWidth = Math.min(Math.max(newWidth, 20), 80);
+      setEditorWidth(clampedWidth);
+    },
+    [isDragging]
+  );
+
+  const handleMouseUp = useCallback(() => {
+    setIsDragging(false);
+  }, []);
+
+  useEffect(() => {
+    if (isDragging) {
+      document.addEventListener("mousemove", handleMouseMove);
+      document.addEventListener("mouseup", handleMouseUp);
+      
+      return () => {
+        document.removeEventListener("mousemove", handleMouseMove);
+        document.removeEventListener("mouseup", handleMouseUp);
+      };
+    }
+  }, [isDragging, handleMouseMove, handleMouseUp]);
+
   const parsedLines = useMemo((): ParsedLine[] => {
     return code.split("\n").map((line, index) => {
       const trimmed = line.trim();
@@ -267,9 +305,12 @@ E = mc^2
         )}
       </div>
 
-      <div className="flex flex-1 overflow-hidden">
+      <div ref={containerRef} className="flex flex-1 overflow-hidden relative">
         {/* Editor Panel */}
-        <div className="w-1/2 border-r border-border flex flex-col">
+        <div 
+          className="border-r border-border flex flex-col"
+          style={{ width: `${editorWidth}%` }}
+        >
           <div className="px-4 py-2 border-b border-border bg-muted/30 h-10 flex items-center">
             <h2 className="text-sm font-medium text-muted-foreground">Editor</h2>
           </div>
@@ -279,7 +320,7 @@ E = mc^2
               ref={lineNumbersRef}
               className="w-12 bg-muted/30 border-r border-border overflow-hidden select-none flex-shrink-0"
             >
-              <div className="p-4 pr-2 font-mono text-sm text-muted-foreground text-right leading-[1.5rem]">
+              <div className="p-4 pr-2 font-mono text-sm text-muted-foreground text-right leading-[1.5rem] whitespace-pre">
                 {Array.from({ length: lineCount }, (_, i) => (
                   <div key={i + 1}>{i + 1}</div>
                 ))}
@@ -291,15 +332,28 @@ E = mc^2
               value={code}
               onChange={(e) => setCode(e.target.value)}
               onScroll={handleScroll}
-              className="flex-1 p-4 font-mono text-sm bg-background text-foreground resize-none focus:outline-none leading-[1.5rem]"
+              className="flex-1 p-4 font-mono text-sm bg-background text-foreground resize-none focus:outline-none leading-[1.5rem] whitespace-pre overflow-x-auto"
               spellCheck={false}
               placeholder="Enter LaTeX expressions, one per line..."
+              wrap="off"
             />
           </div>
         </div>
 
+        {/* Resize Handle */}
+        <div
+          className={`w-1 bg-border hover:bg-primary/50 cursor-col-resize flex-shrink-0 transition-colors ${
+            isDragging ? "bg-primary" : ""
+          }`}
+          onMouseDown={handleMouseDown}
+          style={{ cursor: "col-resize" }}
+        />
+
         {/* Preview Panel */}
-        <div className="w-1/2 flex flex-col">
+        <div 
+          className="flex flex-col"
+          style={{ width: `${100 - editorWidth}%` }}
+        >
           <div className="px-4 py-2 border-b border-border bg-muted/30 h-10 flex items-center justify-between">
             <h2 className="text-sm font-medium text-muted-foreground">Preview</h2>
             <div className="flex items-center gap-3">

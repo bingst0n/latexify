@@ -118,7 +118,7 @@ const Index = () => {
             </div>
             
             <p className="text-lg md:text-xl text-foreground/80 leading-relaxed">
-              A simple tool that converts messy math—images, screenshots, handwritten notes, 
+              Convert messy math—images, screenshots, handwritten notes, 
               or rough text—into clean, ready-to-use LaTeX. Drop something in, and LaTeXify 
               turns it into structured equations you can paste directly into papers, homework, 
               or research.
